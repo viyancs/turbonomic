@@ -12,6 +12,15 @@ const app = new App({
   port: process.env.PORT || 3000
 });
 
+
+app.message('knock knock', async ({ message, say }) => {
+  await say(`_Who's there?_`);
+});
+
+app.event('message', async ({ event, client, logger }) => {
+console.log(event);
+});
+
 app.message(subtype('bot_message'), ({ event, logger }) => {
     console.log(event);
     console.log(event.blocks[5].elements)
