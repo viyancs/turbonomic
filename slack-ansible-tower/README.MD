@@ -1,0 +1,1 @@
+This repo for integrating slack api into ansible tower, the idea is read message that coming from slack channel and then forward into ansible tower
