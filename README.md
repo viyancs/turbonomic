@@ -8,5 +8,18 @@
 How to Run 
 ====
 ```
-node index.js
+nohup node index.js &
+```
+
+How to fetch the log
+====
+```
+tail -f nohup.out
+```
+
+how to test
+====
+```
+    curl -X POST http://{{ip_address}}:3000/webhook -H 'Content-Type: application/json' -d '{"message": "Hello, world!"}'
+
 ```
