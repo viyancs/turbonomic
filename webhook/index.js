@@ -10,5 +10,5 @@ app.post('/webhook', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Webhook server listening at http://100.25.166.161:${port}`);
+  console.log(`Webhook server listening at http://0.0.0.0:${port}`);
 });
