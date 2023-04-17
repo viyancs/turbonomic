@@ -1,0 +1,22 @@
+{
+    "scripts":[
+       {
+          "name":"VmScaleAction",
+          "description":"Execute this script in Preparation Continues Integration to a VM SCALE",
+          "scriptPath":"/home/sofiyani/Documents/scripts/ansible.sh",
+          "entityType":"VIRTUAL_MACHINE",
+          "actionType":"SCALE",
+          "actionPhase":"PRE"
+       },
+       {
+          "name":"VmResizeAction",
+          "description":"Execute this script to a VM Resize",
+          "scriptPath":"/home/sofiyani/Documents/scripts/ansible.sh",
+          "entityType":"VIRTUAL_MACHINE",
+          "actionType":"RESIZE",
+          "actionPhase":"PRE"
+       }
+ 
+    ]
+ }
+ 

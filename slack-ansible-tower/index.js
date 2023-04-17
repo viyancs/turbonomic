@@ -1,5 +1,11 @@
 require('dotenv').config();
+const axios = require('axios');
+const https = require('https');
 const { App, subtype } = require('@slack/bolt');
+const towerUrl = process.env.ANSIBLE_TOWER_URL;
+const username = process.env.ANSIBLE_TOWER_USERNAME;
+const password = process.env.ANSIBLE_TOWER_PASSWORD;
+const workflowId = process.env.ANSIBLE_WORKFLOW_ID;
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -12,6 +18,16 @@ const app = new App({
   port: process.env.PORT || 3000
 });
 
+// set up the request data
+const requestData = {
+  // 'extra_vars': {
+  //   'param1': 'value1',
+  //   'param2': 'value2'
+  // }
+};
+const agent = new https.Agent({
+  rejectUnauthorized: false
+});
 
 app.message('knock knock', async ({ message, say }) => {
   await say(`_Who's there?_`);
@@ -22,13 +38,32 @@ console.log(event);
 });
 
 app.message(subtype('bot_message'), ({ event, logger }) => {
-    console.log(event);
-    console.log(event.blocks[5].elements)
+  // make the request
+  axios.post(`${towerUrl}/api/v2/workflow_job_templates/${workflowId}/launch/`, requestData, {
+    httpsAgent: agent,
+    auth: {
+      username: username,
+      password: password
+    }
+  })
+  .then(response => {
+    console.log(`Workflow execution started. Job ID: ${response.data.id}`);
+  })
+  .catch(error => {
+    console.error('Error executing workflow:', error.response.data);
+  });
 });
 
 (async () => {
-  // Start your app
-  await app.start();
 
-  console.log('⚡️ Bolt app is running!');
+  try {
+    // Start your app
+    await app.start();
+    console.log('⚡️ Bolt app is running!');
+  } catch (error) {
+    console.log(error)
+  }
+  
+
+  
 })();

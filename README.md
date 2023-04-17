@@ -1,1 +1,1 @@
-this repo for integrating turbonomic event into the next level, using slack as webhook & ansible tower for automation configuration, please read README.md on each folder for more information!
+this repo for integrating turbonomic event into the next level, using slack as webhook, action script server as executed env & ansible tower for automation configuration, please read README.md on each folder for more information!
