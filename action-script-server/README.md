@@ -6,7 +6,7 @@ Pre Requirement
 3. git
 
 
-How to Use
+How to Use ?
 =======
 
 1. Clone the git repo https://github.com/viyancs/turbonomic.git on action server target under directory /home/{user}/Documents/scripts
@@ -14,5 +14,21 @@ How to Use
 cd /home/{user}/Documents
 git clone https://github.com/viyancs/turbonomic.git scripts
 ```
-2. Change into directory scripts and copy ansible.sh.sample to ansible.sh
-3. modify ansible.sh
+2. cd into directory scripts and copy ansible.sh.sample to ansible.sh
+```
+cd /home/{user}/Documents/scripts
+mv ansible.sh.sample ansible.sh
+
+```
+modify all variable that you needed such LOG_FILE location, TOWER_HOST, TOWER_USERNAME, TOWER_PASSWORD and WORKFLOW_ID
+
+```
+vi ansible.sh
+```
+
+3. modify ansible.json change value <b>scriptPath</b> property to your directory ansible.sh location
+```
+vi ansible.json
+```
+
+
