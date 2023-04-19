@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Define log file path
+LOG_FILE="/home/sofiyani/Documents/scripts/ansible.log"
+
+# Echo message to console
+echo "Executing script..."
+
+# Write message to log file
+echo "$(date): Script executed." >> $LOG_FILE
+
+myActionData=$(cat -)
+
+echo "$myActionData" >> $LOG_FILE
+
+echo "\n" >> $LOG_FILE
+
+TOWER_HOST="10.100.1.113"
+TOWER_USERNAME="admin"
+TOWER_PASSWORD="admin1234"
+WORKFLOW_ID=40
+
+# Get authentication token
+TOKEN=$(curl -XPOST -k -H "Content-type: application/json" -d '{"description":"Personal Tower CLI token", "application":null, "scope":"write"}' https://${TOWER_USERNAME}:${TOWER_PASSWORD}@${TOWER_HOST}/api/v2/users/1/personal_tokens/ |  jq -r '.token')
+echo $TOKEN
+
+WORKFLOW=$(curl -k -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -X POST  -d '{}' https://${TOWER_HOST}/api/v2/workflow_job_templates/${WORKFLOW_ID}/launch/)
+
+echo "$WORKFLOW" >> $LOG_FILE
