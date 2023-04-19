@@ -9,10 +9,11 @@ Pre Requirement
 How to Use ?
 =======
 
-1. Clone the git repo https://github.com/viyancs/turbonomic.git on action server target under directory /home/{user}/Documents/scripts
+1. Clone the git repo https://github.com/viyancs/turbonomic.git on action server target under directory /home/{user}/Documents
 ```
 cd /home/{user}/Documents
-git clone https://github.com/viyancs/turbonomic.git scripts
+git clone https://github.com/viyancs/turbonomic.git 
+cp turbonomic/action-script-server scripts
 ```
 2. cd into directory scripts and copy ansible.sh.sample to ansible.sh
 ```
@@ -36,7 +37,7 @@ vi ansible.json
 chmod +x ansible.sh
 ./ansible.sh
 ```
-this command gonna create ansible.log file and executing ansible tower workflow by worflow id, if this success workflow id on ansible tower gonna be running
+this command gonna create ansible.log file and executing ansible tower workflow by worflow id, if this success workflow id on ansible tower gonna be running    
 
 
 
