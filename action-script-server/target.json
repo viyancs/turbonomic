@@ -1,0 +1,27 @@
+{
+    "category":"Orchestrator",
+    "inputFields":[
+      {
+        "name":"nameOrAddress",
+        "value":"10.18.0.55"
+      },
+      {
+        "name":"port",
+        "value":"22"
+      },
+      {
+        "name":"userid",
+        "value":"{username}"
+      },
+      {
+        "name":"privateKeyString",
+        "value":"-----BEGIN OPENSSH PRIVATE KEY-----\nPRIVATE KEY AS STRING\n-----END OPENSSH PRIVATE KEY-----\n"
+      },
+      {
+        "name":"manifestPath",
+        "value":"/home/{username}/Documents/scripts/ansible.json"
+      }
+    ],
+    "type":"Action Script"
+  }
+  
