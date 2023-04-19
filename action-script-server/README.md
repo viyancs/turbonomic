@@ -31,4 +31,13 @@ vi ansible.sh
 vi ansible.json
 ```
 
+4. Testing the script by running ansible.sh
+```
+chmod +x ansible.sh
+./ansible.sh
+```
+this command gonna create ansible.log file and executing ansible tower workflow by worflow id, if this success workflow id on ansible tower gonna be running
+
+
+
 
